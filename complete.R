@@ -11,10 +11,23 @@ complete <- function(directory, id = 1:332) {
   ## 2  1041
   ## ....
   
-  good <- complete.cases(dat[["sulfate"]], dat[["nitrate"]])
   
-  # result
-  length(dat[good, 1])
+  ##fileList <- list.files('specdata', pattern = "*.csv")
+  nobs <- c()
+  
+  for(loop_id in id){
+  
+    dat <- read.csv(sprintf("%s/%03d.csv",directory, loop_id), header = TRUE, sep = ",", quote = "\"",
+             dec = ".", fill = TRUE, comment.char = "")
+  
+    nobs <- complete.cases(dat[["sulfate"]], dat[["nitrate"]])
+  
+    # result
+    nobs <- c(goods, length(dat[good, 1]))
+
+  }
+  
+  c***(ids, nobs)
   
   # actual complete records
   #dat_cmp <- dat[good, ]
