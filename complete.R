@@ -20,14 +20,21 @@ complete <- function(directory, id = 1:332) {
     dat <- read.csv(sprintf("%s/%03d.csv",directory, loop_id), header = TRUE, sep = ",", quote = "\"",
              dec = ".", fill = TRUE, comment.char = "")
   
-    nobs <- complete.cases(dat[["sulfate"]], dat[["nitrate"]])
+    good <- complete.cases(dat[["sulfate"]], dat[["nitrate"]])
   
     # result
-    nobs <- c(goods, length(dat[good, 1]))
+    length(dat[nobs, 1])
+    
+    nobs <- c(nobs, length(dat[good, 1]))
 
   }
   
-  c***(ids, nobs)
+  id
+  
+  nobs
+  
+  data.frame(id, nobs)
+
   
   # actual complete records
   #dat_cmp <- dat[good, ]

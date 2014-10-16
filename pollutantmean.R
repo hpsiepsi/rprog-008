@@ -1,4 +1,4 @@
-pollutantmean <- function(directory, polutant, id=1:332){
+pollutantmean <- function(directory, polutant, id = 1:332){
   
   ## 'directory' is a character vector of length 1 indicating
   ## the location of the CSV files
@@ -17,6 +17,9 @@ pollutantmean <- function(directory, polutant, id=1:332){
   #change to directory
   #directory <- "C:/Users/mrross/Dropbox/Personal/ComputerStuff/BigDataStuff/CorsicaClasses/scripts_git/specdata"
   #setwd(directory)
+  means <- c()
+  sizes <- c()
+  
   
   # loop for files
   for( loop_id in id)
@@ -34,7 +37,7 @@ pollutantmean <- function(directory, polutant, id=1:332){
    }
   
   # finish weighted average
-  avg = sum(means * sizes)/sum(sizes)
+  avg = sum(means * sizes,na.rm =TRUE) /sum(sizes,na.rm =TRUE)
   
-  avg
+return(avg)
 }
